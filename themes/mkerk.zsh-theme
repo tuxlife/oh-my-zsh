@@ -19,9 +19,9 @@ _PROMPT="%B${_PROMPT}[%D{%Y%m%d %H%M%S}%{$reset_color%}] %~ "
 is_root_shell && PROMPT="%{$fg[red]%}$_PROMPT%{$fg[red]%}"
   #RPROMPT='%(?..:( (%?%))'
   #RPROMPT="%(?..%{$bg[red]$fg_bold[white]%}:( (%?%)%{$reset_color%} )%~"
-#  RPROMPT="%(?..%{$bg[red]$fg_bold[white]%}:( (%?%)%{$reset_color%} )"
+RPROMPT="%(?..%{$bg[red]$fg_bold[white]%}:( (%?%)%{$reset_color%} )"
 
-#  PROMPT2="%_> "
+PROMPT2="%_> "
 
 
 # primary prompt
@@ -37,13 +37,13 @@ $FG[105]%(!.#.»)%{$reset_color%} '
 eval my_gray='$FG[237]'
 eval my_orange='$FG[214]'
 
-# right prompt
-if type "virtualenv_prompt_info" > /dev/null
-then
-	RPROMPT='$(virtualenv_prompt_info)$my_gray%n@%m%{$reset_color%}%'
-else
-	RPROMPT='$my_gray%n@%m%{$reset_color%}%'
-fi
+## right prompt
+#if type "virtualenv_prompt_info" > /dev/null
+#then
+#	RPROMPT='$(virtualenv_prompt_info)$my_gray%n@%m%{$reset_color%}%'
+#else
+#	RPROMPT='$my_gray%n@%m%{$reset_color%}%'
+#fi
 
 # git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="$my_orange("
