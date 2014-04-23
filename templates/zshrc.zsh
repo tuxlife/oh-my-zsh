@@ -53,7 +53,8 @@ ZSH_THEME="mkerk"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ssh-agent command-not-found encode64 fabric gpg-agent jira perl python screen svn )
+# gpg-agent
+plugins=(git ssh-agent command-not-found encode64 fabric jira perl python screen svn )
 
 source $ZSH/oh-my-zsh.sh
 
