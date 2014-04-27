@@ -201,3 +201,9 @@ alias pwgen='pwgen  -B -n 13'
   alias ls='ls --color=auto' # Farbe. Wichtig! Benutzt $LS_COLORS
   alias l='ls -alF'
 
+# Quote pasted URLs
+
+autoload url-quote-magic
+
+zle -N self-insert url-quote-magic
+
