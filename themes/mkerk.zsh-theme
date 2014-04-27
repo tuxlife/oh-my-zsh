@@ -14,9 +14,9 @@ fi
 #fi
 [[ -z $SCHROOT_SESSION_ID ]] || _PROMPT="[${SCHROOT_SESSION_ID%%-*}] => ${_PROMPT}"
 
-_PROMPT="%B${_PROMPT}[%D{%Y%m%d %H%M%S}%{$reset_color%}] %~ "
+_PROMPT="%B${_PROMPT}[%D{%Y%m%d %H%M%S}] %~ "
 #  PROMPT="%B${PROMPT}[%b%{$bg[$DATEBACK]$fg[$DATEFRONT]%}%D{%m-%d %T}%{$reset_color%}%B] %~ %1(j.(%B%j%b%).)%#%b "
-is_root_shell && PROMPT="%{$fg[red]%}$_PROMPT%{$fg[red]%}"
+is_root_shell && _PROMPT="%{$fg[red]%}$_PROMPT%{$fg[red]%}"
   #RPROMPT='%(?..:( (%?%))'
   #RPROMPT="%(?..%{$bg[red]$fg_bold[white]%}:( (%?%)%{$reset_color%} )%~"
 RPROMPT="%(?..%{$bg[red]$fg_bold[white]%}:( (%?%)%{$reset_color%} )"
