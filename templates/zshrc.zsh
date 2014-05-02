@@ -201,6 +201,9 @@ alias pwgen='pwgen  -B -n 13'
   fi
   alias ls='ls --color=auto' # Farbe. Wichtig! Benutzt $LS_COLORS
   alias l='ls -alF'
+  if [[ -e ~/.zshrc.sec_host ]]; then
+    source ~/.zshrc.sec_host
+  fi
 
 # Quote pasted URLs
 
