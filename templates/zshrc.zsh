@@ -205,3 +205,9 @@ alias pwgen='pwgen  -B -n 13'
     source ~/.zshrc.sec_host
   fi
 
+# Quote pasted URLs
+
+autoload url-quote-magic
+
+zle -N self-insert url-quote-magic
+
