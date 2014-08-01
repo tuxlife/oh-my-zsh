@@ -210,4 +210,4 @@ alias pwgen='pwgen  -B -n 13'
 autoload url-quote-magic
 
 zle -N self-insert url-quote-magic
-
+alias cmdb-client='~/GIT/zalando-cmdb-client/cmdb/client.py https://cmdb.zalando.net'
