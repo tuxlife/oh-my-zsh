@@ -82,7 +82,7 @@ HISTSIZE=15000 # Größe der History
 SAVEHIST=10000 # Maximale Anzahl der Einträge, die gespeichert werden
 HISTFILE=$HOME/.zsh_history # Speicherort der History
 is_root_shell && HISTFILE=$HOME/.zsh_history.root
-
+setopt interactivecomments
 # Bei verbesserungen folgende Nachfrage:
 # %R -> aktueller Befehl,
 # %r -> Verbesserungsvorschlag
@@ -198,9 +198,6 @@ alias pwgen='pwgen  -B -n 13'
   alias gvim='gvim -p'
 
   alias diff='diff -x .svn'
-  alias ilo='vim ~/SVN/sysop/acctmgmt/ilo.gpg'
-  alias acct='vim ~/SVN/sysop/acctmgmt/accounts.gpg'
-  alias pp='ssh puppet@puppet.zalando'
   if [[ -e ~/.alias ]]; then
     . ~/.alias
   fi
