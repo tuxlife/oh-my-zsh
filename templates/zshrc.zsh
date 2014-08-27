@@ -184,6 +184,11 @@ setopt interactivecomments
 
 # Find all files with suid set in $PATH
   suidfind() { ls -l --color=auto $^path/*(.sN) }
+
+  mac_to_ipv6 () {
+    mac=("${(s/:/)1}")
+    printf "fe80::%02x%02x:%02x:%02x:%02x\n" $(( 0x$mac[1] ^ 0x02 )) 0x$mac[2] 0x$mac[3]ff 0xfe$mac[4] 0x$mac[5]$mac[6]
+  }
 # }}}
 
   ## format of process time reports with 'time'
@@ -207,4 +212,3 @@ alias pwgen='pwgen  -B -n 13'
 autoload url-quote-magic
 
 zle -N self-insert url-quote-magic
-
