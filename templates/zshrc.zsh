@@ -194,6 +194,8 @@ setopt interactivecomments
   ## format of process time reports with 'time'
   TIMEFMT="Real: %E User: %U System: %S Percent: %P Cmd: %J"
 alias pwgen='pwgen  -B -n 13'
+alias apt-get='sudo apt-get'
+alias tcpdump='sudo tcpdump'
 
   alias gvim='gvim -p'
 
