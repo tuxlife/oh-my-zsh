@@ -193,8 +193,11 @@ setopt interactivecomments
 
   ## format of process time reports with 'time'
   TIMEFMT="Real: %E User: %U System: %S Percent: %P Cmd: %J"
-alias pwgen='pwgen  -B -n 13'
+  alias pwgen='pwgen  -B -n 13'
   alias sshnk='ssh -o UserKnownHostsFile=/dev/null'
+  alias apt-get='sudo apt-get'
+  alias tcpdump='sudo tcpdump'
+
   alias gvim='gvim -p'
 
   alias diff='diff -x .svn'
@@ -214,9 +217,15 @@ autoload url-quote-magic
 zle -N self-insert url-quote-magic
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/home/matthias/google-cloud-sdk/path.zsh.inc'
+if [ -e /home/matthias/google-cloud-sdk/path.zsh.inc ]; then
+    source '/home/matthias/google-cloud-sdk/path.zsh.inc'
+fi
+
 
 # The next line enables bash completion for gcloud.
-source '/home/matthias/google-cloud-sdk/completion.zsh.inc'
-source aws_zsh_completer.sh
+if [ -e /home/matthias/google-cloud-sdk/completion.zsh.inc ]; then
+    source '/home/matthias/google-cloud-sdk/completion.zsh.inc'
+fi
+
+which aws_zsh_completer.sh >/dev/null && source aws_zsh_completer.sh
 

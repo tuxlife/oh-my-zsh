@@ -48,7 +48,7 @@ eval my_orange='$FG[214]'
 # git settings
 ZSH_THEME_GIT_PROMPT_PREFIX="$my_orange("
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}✔%{$rest_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}✘%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$my_orange)%{$reset_color%}"
 
 # Editieren und Neuladen der .zshrc
