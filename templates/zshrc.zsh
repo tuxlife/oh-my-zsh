@@ -216,16 +216,18 @@ autoload url-quote-magic
 
 zle -N self-insert url-quote-magic
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -e /home/matthias/google-cloud-sdk/path.zsh.inc ]; then
+if is_root_shell ; then
+  #echo "No completer...";
+else
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -e /home/matthias/google-cloud-sdk/path.zsh.inc ]; then
     source '/home/matthias/google-cloud-sdk/path.zsh.inc'
-fi
-
-
-# The next line enables bash completion for gcloud.
-if [ -e /home/matthias/google-cloud-sdk/completion.zsh.inc ]; then
+  fi
+  # The next line enables bash completion for gcloud.
+  if [ -e /home/matthias/google-cloud-sdk/completion.zsh.inc ]; then
     source '/home/matthias/google-cloud-sdk/completion.zsh.inc'
-fi
+  fi
 
-which aws_zsh_completer.sh >/dev/null && source aws_zsh_completer.sh
+  which aws_zsh_completer.sh >/dev/null && source aws_zsh_completer.sh
+fi
 
