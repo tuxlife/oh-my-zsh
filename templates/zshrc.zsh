@@ -26,7 +26,7 @@ ZSH_THEME="mkerk"
 # CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how often to auto-update? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -67,6 +67,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
+export EDITOR='vim'
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
