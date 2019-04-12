@@ -8,14 +8,14 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="random"
-ZSH_THEME=""
-ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
-ZSH_THEME="garyblessington"
-ZSH_THEME="gnzh"
-ZSH_THEME="aussiegeek"
-ZSH_THEME="af-magic"
+#ZSH_THEME="random"
+#ZSH_THEME=""
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="garyblessington"
+#ZSH_THEME="gnzh"
+#ZSH_THEME="aussiegeek"
+#ZSH_THEME="af-magic"
 ZSH_THEME="mkerk"
 
 # Example aliases
@@ -57,7 +57,7 @@ ZSH_THEME="mkerk"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # gpg-agent
-plugins=(git ssh-agent command-not-found encode64 fabric jira perl python screen svn )
+plugins=(gpg gpg-agent command-not-found encode64 fabric jira perl python screen svn )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -68,6 +68,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 # # Preferred editor for local and remote sessions
+export EDITOR='vim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -83,6 +84,7 @@ export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 HISTSIZE=15000 # Größe der History
 SAVEHIST=10000 # Maximale Anzahl der Einträge, die gespeichert werden
 HISTFILE=$HOME/.zsh_history # Speicherort der History
+WORDCHARS='*?_-[]~&;!#$%^(){}<>'
 is_root_shell && HISTFILE=$HOME/.zsh_history.root
 setopt interactivecomments
 # Bei verbesserungen folgende Nachfrage:
@@ -194,9 +196,17 @@ setopt interactivecomments
 # }}}
 
   ## format of process time reports with 'time'
-  TIMEFMT="Real: %E User: %U System: %S Percent: %P Cmd: %J"
+  TIMEFMT='Real: %E User: %U System: %S Percent: %P Cmd: %J'$'\n'\
+'avg shared (code):         %X KB'$'\n'\
+'avg unshared (data/stack): %D KB'$'\n'\
+'total (sum):               %K KB'$'\n'\
+'max memory:                %M MB'$'\n'\
+'page faults from disk:     %F'$'\n'\
+'other page faults:         %R'
   alias pwgen='pwgen  -B -n 13'
   alias sshnk='ssh -o UserKnownHostsFile=/dev/null'
+  alias apt='sudo apt'
+  alias pacman='sudo pacman'
   alias apt-get='sudo apt-get'
   alias tcpdump='sudo tcpdump'
 
@@ -211,12 +221,20 @@ setopt interactivecomments
   if [[ -e ~/.zshrc.sec_host ]]; then
     source ~/.zshrc.sec_host
   fi
+  if [[ -d ~/go ]]; then
+    #export GOROOT=~/go/go-1.11.2
+    export GOPATH=~/go/packages
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+  fi
 
 # Quote pasted URLs
 
 autoload url-quote-magic
 
 zle -N self-insert url-quote-magic
+
+# File sort for completion
+zstyle ':completion:*:*:*:*:*' file-sort date
 
 if is_root_shell ; then
   #echo "No completer...";
@@ -286,3 +304,30 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+KDE_SESSION_ID=$KDE_SESSION_ID
+export KDE_SESSION_ID
+#source <(kubectl completion zsh)
+#source <(zkubectl completion zsh)
+if [[ -e ~/.ng_completion ]]; then
+  source ~/.ng_completion
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+PATH="/home/mkerk/perl5/bin${PATH:+:${PATH}}"; export PATH;
+LGOPATH="/home/mkerk/lgo" ; export LGOPATH
+PERL5LIB="/home/mkerk/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/mkerk/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/mkerk/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/mkerk/perl5"; export PERL_MM_OPT;
+
+
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi

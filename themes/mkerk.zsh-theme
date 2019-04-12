@@ -23,7 +23,16 @@ RPROMPT="%(?..%{$bg[red]$fg_bold[white]%}:( (%?%)%{$reset_color%} )"
 
 PROMPT2="%_> "
 
-
+if [[ -f $ZSH_CUSTOM/zsh-git-prompt/zshrc.sh ]]; then
+source $ZSH_CUSTOM/zsh-git-prompt/zshrc.sh
+# primary prompt
+PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
+${_PROMPT}\
+$FG[032]$(git_super_status)\
+$FG[105]%(!.#.»)%{$reset_color%} '
+#PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
+#RPS1='${return_code}'
+else
 # primary prompt
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
 ${_PROMPT}\
@@ -31,6 +40,7 @@ $FG[032]$(git_prompt_info)\
 $FG[105]%(!.#.»)%{$reset_color%} '
 #PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 #RPS1='${return_code}'
+fi
 
 
 # color vars
